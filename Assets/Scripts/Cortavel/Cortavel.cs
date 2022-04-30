@@ -25,7 +25,6 @@ public class Cortavel : MonoBehaviour
     private void Start()
     {
         _cortavel = this;
-
     }
 
     
@@ -34,8 +33,6 @@ public class Cortavel : MonoBehaviour
 
         if (collision.collider.gameObject.CompareTag("Lamina") && !_quebrado)
         {
-
-
             //remover o rigidbody do pai e adicionar aos filhos
             Destroy(GetComponent<Rigidbody>());
 
@@ -43,7 +40,7 @@ public class Cortavel : MonoBehaviour
             _parteA.transform.SetParent(null);
             _parteB.transform.SetParent(null);
 
-
+            //Adicionando físicas nas partes cortadas
             if (_parteA.GetComponent<Rigidbody>() == null)
             {
                 _rbA = _parteA.AddComponent<Rigidbody>();
@@ -54,15 +51,18 @@ public class Cortavel : MonoBehaviour
                 _rbB = _parteB.AddComponent<Rigidbody>();
             }
 
+            //adicionando peso nas partes cortadas
             _rbA.mass = _pesoPartes;
             _rbB.mass = _pesoPartes;
 
 
+            //aplicando forca para dar um movimento mais natural
             _rbA.AddForceAtPosition(Vector3.right * 1000, _forceAtPosition.right);
             _rbB.AddForceAtPosition(-Vector3.right * 1000, -_forceAtPosition.right);
 
             _quebrado = true;
 
+            //coletando pontos
             CheckPoint();
             
         }

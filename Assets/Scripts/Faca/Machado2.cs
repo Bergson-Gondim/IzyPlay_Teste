@@ -25,26 +25,13 @@ public class Machado2 : MonoBehaviour
             SliceAction();
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        _inGround = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        _inGround = false;
-    }
+    
 
     public void SliceAction()
     {
-        if (_inGround)
-        {
-            _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
-        }
-        else
-        {
-            _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
-        }
+
+        _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,10 +41,10 @@ public class Machado2 : MonoBehaviour
         {
             //voce ganhou
             GameManager._gameManager._voceGanhou = true;
-            GameManager._gameManager.CheckStatus() ;
+            GameManager._gameManager.CheckStatus();
         }
 
-
+        //detectar perda
         if (other.gameObject.CompareTag("Perdeu"))
         {
             //voce perdeu

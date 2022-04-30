@@ -16,6 +16,7 @@ public class CameraMachado : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //a câmera para em uma dessas condições
         if (!GameManager._gameManager._vocePerdeu && !GameManager._gameManager._voceGanhou)
         {
             Vector3 _newPosition = _offset + _target.transform.position;

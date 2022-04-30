@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    //registrando os pontos
     public void CheckPoint(int _getPoints)
     {
         //armazenando pontos
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         UImanager._uiManager._pontos.text = _points.ToString();
     }
 
+    //registrando o status de ganhar ou perder
     public void CheckStatus()
     {
         if (_voceGanhou)
