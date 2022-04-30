@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Machado2 : MonoBehaviour
 {
+    public static Machado2 _machado2;
     public Rigidbody _rb;
 
     public Transform _atposision;
@@ -12,6 +13,7 @@ public class Machado2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _machado2 = this;
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -20,15 +22,7 @@ public class Machado2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (_inGround)
-            {
-                _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
-            }
-            else
-            {
-                _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
-                //_rb.AddForce(-transform.up* _torqueForce / 5);
-            }
+            SliceAction();
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -40,4 +34,39 @@ public class Machado2 : MonoBehaviour
     {
         _inGround = false;
     }
+
+    public void SliceAction()
+    {
+        if (_inGround)
+        {
+            _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
+        }
+        else
+        {
+            _rb.AddTorque(_atposision.right * _torqueForce, ForceMode.Acceleration);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //detectar chegada
+        if (other.gameObject.CompareTag("Chegada"))
+        {
+            //voce ganhou
+            GameManager._gameManager._voceGanhou = true;
+            GameManager._gameManager.CheckStatus() ;
+        }
+
+
+        if (other.gameObject.CompareTag("Perdeu"))
+        {
+            //voce perdeu
+            GameManager._gameManager._vocePerdeu = true;
+            GameManager._gameManager.CheckStatus();
+        }
+
+    }
+
+
+
 }

@@ -16,7 +16,10 @@ public class CameraMachado : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 _newPosition =_offset+ _target.transform.position;
-        transform.position = Vector3.Lerp(transform.position, _newPosition, .5f);
+        if (!GameManager._gameManager._vocePerdeu && !GameManager._gameManager._voceGanhou)
+        {
+            Vector3 _newPosition = _offset + _target.transform.position;
+            transform.position = Vector3.Lerp(transform.position, _newPosition, .5f);
+        }
     }
 }
