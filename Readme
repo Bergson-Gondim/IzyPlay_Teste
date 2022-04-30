@@ -1,0 +1,8 @@
+No primeiro dia mentalizei o projeto e os algoritmos de funcionamento.
+Joguei o jogo várias vezes e assisti vídeos do jogo para captar melhor a idéia
+Vi que no jogo de exemplo os objetos tem as malhas literalmente cortadas. Porém, eu utilizei minha técnica de cortar os objetos no Blender(o objeto é dividido em duas partes). Assim poupo mais recursos do dispositivo.
+
+No processo de produção refiz o código algumas vezes para me livrar de vários bugs que apareceram. 
+Foi um desafio interessante para mim pois foi a primeira vez que fiz um jogo com mecânica semelhante.
+
+O jogo tem uma peculiaridade em relação ao jogo de exemplo que eu utilizo a própria física da Unity. Tornando o jogo mais desafiador. Pois no jogo original é utilizado mais animação do que a física propriamente dito.
